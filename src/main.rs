@@ -84,7 +84,7 @@ fn select_entry<'a>(entries: &'a [DesktopEntry]) -> Result<&'a DesktopEntry<'a>>
             }
 
             Ok(_) => eprintln!("\nInvalid number. Please try again.\n"),
-            Err(_) => eprintln!("\nInvalid Input. Please try again.\n"),
+            Err(_) => eprintln!("\nInvalid input. Please try again.\n"),
         }
     }
 }
