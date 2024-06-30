@@ -23,7 +23,7 @@ Desk-exec can be built from source or installed with cargo from [crates.io](http
 ## Contributing
 
 If you have any suggestions or problems, please [submit an issue](https://github.com/AxerTheAxe/desk-exec/issues/new).
-If you would like to contribute code, [pull requests are welcome](https://github.com/AxerTheAxe/desk-exec.nvim/compare).
+If you would like to contribute code, [pull requests are welcome](https://github.com/AxerTheAxe/desk-exec/compare).
 
 ## License
 
