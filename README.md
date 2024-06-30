@@ -16,7 +16,9 @@ Allows for substring pattern based searching.
 ## Installation
 
 As this project is in very early development, no pre-packaged binaries are provided at this moment.
-Desk-exec can be built from source or installed with cargo at it's [crates.io page.](https://crates.io/crates/desk_exec)
+Desk-exec can be built from source or installed with cargo from [crates.io](https://crates.io/crates/desk_exec)
+
+`cargo install desk-exec`
 
 ## Contributing
 
