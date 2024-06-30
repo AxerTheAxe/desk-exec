@@ -15,8 +15,23 @@ Allows for substring pattern based searching.
 
 ## Installation
 
-As this project is in very early development, no pre-packaged binaries are provided at this moment.
-Desk-exec can be built from source or installed with cargo from [crates.io](https://crates.io/crates/desk_exec)
+Currently, binaries for x86_64 are the only ones provided.
+
+### ArchLinux
+
+Desk-exec can be installed using your favorite AUR helper with any of the following packages.
+
+`paru -S (desk-exec, desk-exec-bin, desk-exec-git)`
+
+### Releases
+
+Binary tar-balls can be found on the [releases page.](https://github.com/AxerTheAxe/desk-exec/releases)
+
+The `dist` folder will contain any extra stuff like shell completions and man page entries.
+
+### Cargo
+
+Desk-exec can also be built from source or installed with cargo from [crates.io](https://crates.io/crates/desk_exec)
 
 `cargo install desk-exec`
 
