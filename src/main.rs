@@ -1,7 +1,7 @@
 mod args;
 mod config;
 
-use std::{io, path::PathBuf};
+use std::{io, path::PathBuf, process};
 
 use anyhow::{Context, Result};
 use args::Arguments;
@@ -48,7 +48,7 @@ fn main() -> Result<()> {
     let program_status = desk_exec::exec_entry(entry, arguments.detach)
         .context("failed to execute the specified program")?;
 
-    std::process::exit(
+    process::exit(
         program_status
             .unwrap_or_default()
             .code()
