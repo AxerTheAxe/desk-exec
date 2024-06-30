@@ -14,7 +14,12 @@ use clap_mangen::Man;
 mod args;
 
 fn main() -> Result<()> {
-    let out_dir = PathBuf::from(env::var_os("OUT_DIR").ok_or(ErrorKind::NotFound)?);
+    let out_dir =
+        PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").ok_or(ErrorKind::NotFound)?).join("dist");
+    if !out_dir.exists() {
+        fs::create_dir(&out_dir).unwrap();
+    }
+
     let mut cmd = Arguments::command();
 
     gen_manpage(&cmd, &out_dir)?;
