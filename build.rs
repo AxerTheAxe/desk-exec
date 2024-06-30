@@ -41,6 +41,10 @@ fn gen_manpage(cmd: &Command, out_dir: &Path) -> Result<()> {
 
 fn gen_completions(cmd: &mut Command, out_dir: &Path) -> Result<()> {
     for &shell in Shell::value_variants() {
+        if let Shell::PowerShell = shell {
+            continue;
+        }
+
         clap_complete::generate_to(shell, cmd, "desk-exec", out_dir)?;
     }
     clap_complete::generate_to(Nushell, cmd, "desk-exec", out_dir)?;
