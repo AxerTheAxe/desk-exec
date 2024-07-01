@@ -10,12 +10,14 @@ Allows for substring pattern based searching.
 
 ```sh
 desk-exec <PROGRAM_NAME>
+
 desk-exec <PROGRAM_SUBSTRING>
 ```
 
 ### Execute a desktop entry and detach it from the terminal
 
 ```sh
+desk-exec --detach <PROGRAM_NAME>
 ```
 
 ### Execute a custom desktop entry
