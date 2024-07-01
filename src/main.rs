@@ -38,12 +38,13 @@ fn main() -> Result<()> {
         arguments.first_only,
     )
     .context("no entries found")?;
-    let entry = select_entry(&entries).context("failed to select an entry")?;
 
     if arguments.list_entries {
         print_entries(&entries);
         return Ok(());
     }
+
+    let entry = select_entry(&entries).context("failed to select an entry")?;
 
     let program_status = desk_exec::exec_entry(entry, arguments.detach)
         .context("failed to execute the specified program")?;
