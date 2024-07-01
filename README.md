@@ -13,6 +13,20 @@ Allows for substring pattern based searching.
 
 `desk-exec --detach <PROGRAM_NAME>`
 
+### Execute a custom desktop entry
+
+You may want to execute a program with extra arguments or behaviour. 
+To do this, you can create a .desktop file at the default `$HOME/.local/share/applications`
+or a custom directory set in the configuration file.
+
+Entries found in directories specified in the configuration file will take precedence over
+entries in the user applications folder, which takes precedence over the system applications folder.
+
+```sh
+# Executes the first match found
+desk-exec --first-only <PROGRAM_NAME>
+```
+
 ## Configuration
 
 A default configuration file is generated at `$HOME/.config/desk-exec/desk_exec.toml`.
@@ -22,7 +36,7 @@ A default configuration file is generated at `$HOME/.config/desk-exec/desk_exec.
 # Toggles the searching of the default XDG data directories
 xdg_default_dirs = true
 
-# List of custom search directories
+# List of custom search directories in order of precedence
 dirs = []
 ```
 
