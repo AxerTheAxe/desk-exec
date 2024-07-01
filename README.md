@@ -21,6 +21,10 @@ Currently, binaries for x86_64 are the only ones provided.
 
 Desk-exec can be installed using your favorite AUR helper with any of the following packages.
 
+* [desk-exec](https://aur.archlinux.org/packages/desk-exec)
+* [desk-exec-bin](https://aur.archlinux.org/packages/desk-exec-bin)
+* [desk-exec-git](https://aur.archlinux.org/packages/desk-exec-git)
+
 `paru -S (desk-exec, desk-exec-bin, desk-exec-git)`
 
 ### Releases
