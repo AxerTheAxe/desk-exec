@@ -13,6 +13,19 @@ Allows for substring pattern based searching.
 
 `desk-exec --detach <PROGRAM_NAME>`
 
+## Configuration
+
+A default configuration file is generated at `$HOME/.config/desk-exec/desk_exec.toml`.
+
+```toml
+[search]
+# Toggles the searching of the default XDG data directories
+xdg_default_dirs = true
+
+# List of custom search directories
+dirs = []
+```
+
 ## Installation
 
 Currently, binaries for x86_64 are the only ones provided.
