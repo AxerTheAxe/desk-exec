@@ -42,13 +42,13 @@ Desk-exec can be installed using your favorite AUR helper with any of the follow
 
 ### Releases
 
-Binary tar-balls can be found on the [releases page.](https://github.com/AxerTheAxe/desk-exec/releases)
+Binary tar-balls can be found on the [releases page](https://github.com/AxerTheAxe/desk-exec/releases).
 
 The `dist` folder will contain any extra stuff like shell completions and man page entries.
 
 ### Cargo
 
-Desk-exec can also be built from source or installed with cargo from [crates.io](https://crates.io/crates/desk_exec)
+Desk-exec can also be built from source or installed with cargo from [crates.io](https://crates.io/crates/desk_exec).
 
 `cargo install desk-exec`
 
