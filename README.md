@@ -9,15 +9,13 @@ Allows for substring pattern based searching.
 ### Execute a desktop entry
 
 ```sh
-desk-exec <PROGRAM_NAME>
-
-desk-exec <PROGRAM_SUBSTRING>
+desk-exec <PROGRAM_NAME_OR_SUBSTRING>
 ```
 
 ### Execute a desktop entry and detach it from the terminal
 
 ```sh
-desk-exec --detach <PROGRAM_NAME>
+desk-exec --detach <PROGRAM_NAME_OR_SUBSTRING>
 ```
 
 ### Execute a custom desktop entry
@@ -31,7 +29,7 @@ entries in the user applications folder, which takes precedence over the system 
 
 ```sh
 # Executes the first match found
-desk-exec --first-only <PROGRAM_NAME>
+desk-exec --first-only <PROGRAM_NAME_OR_SUBSTRING>
 ```
 
 ## Configuration
