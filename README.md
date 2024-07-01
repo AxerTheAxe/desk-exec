@@ -7,11 +7,15 @@ Allows for substring pattern based searching.
 
 ### Execute a desktop entry
 
-`desk-exec <PROGRAM_NAME>`
+```sh
+desk-exec <PROGRAM_NAME>
+```
 
 ### Execute a desktop entry and detach it from the terminal
 
-`desk-exec --detach <PROGRAM_NAME>`
+```sh
+desk-exec --detach <PROGRAM_NAME>
+```
 
 ### Execute a custom desktop entry
 
@@ -52,7 +56,9 @@ Desk-exec can be installed using your favorite AUR helper with any of the follow
 * [desk-exec-bin](https://aur.archlinux.org/packages/desk-exec-bin)
 * [desk-exec-git](https://aur.archlinux.org/packages/desk-exec-git)
 
-`paru -S (desk-exec, desk-exec-bin, desk-exec-git)`
+```sh
+paru -S (desk-exec, desk-exec-bin, desk-exec-git)
+```
 
 ### Releases
 
@@ -64,7 +70,9 @@ The `dist` folder will contain any extra stuff like shell completions and man pa
 
 Desk-exec can also be built from source or installed with cargo from [crates.io](https://crates.io/crates/desk_exec).
 
-`cargo install desk-exec`
+```sh
+cargo install desk-exec
+```
 
 ## Contributing
 
