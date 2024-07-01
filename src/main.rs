@@ -59,15 +59,15 @@ fn main() -> Result<()> {
 
 fn select_entry<'a>(entries: &'a [DesktopEntry]) -> Result<&'a DesktopEntry<'a>> {
     if entries.len() == 1 {
-        return Ok(entries
+        return entries
             .first()
-            .context("could not get the first entry from the list")?);
+            .context("could not get the first entry from the list");
     }
 
     let index_width = entries.len().to_string().len();
     loop {
         println!("Multiple entries found. Please enter a number.");
-        for (index, entry) in entries.into_iter().enumerate() {
+        for (index, entry) in entries.iter().enumerate() {
             println!("   {:index_width$}: {}", index, entry.path.display(),);
         }
 
@@ -78,10 +78,10 @@ fn select_entry<'a>(entries: &'a [DesktopEntry]) -> Result<&'a DesktopEntry<'a>>
 
         match input_buffer.trim().parse::<usize>() {
             Ok(entry_index) if entry_index < entries.len() => {
-                return Ok(entries.get(entry_index).context(format!(
+                return entries.get(entry_index).context(format!(
                     "could not get an entry from index '{}'",
                     entry_index
-                ))?);
+                ));
             }
 
             Ok(_) => eprintln!("\nInvalid number. Please try again.\n"),
