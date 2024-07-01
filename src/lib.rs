@@ -181,7 +181,11 @@ pub fn exec_entry(entry: &DesktopEntry, detach: bool) -> Result<Option<ExitStatu
 fn match_entry_name(program_name: &str, entry: &DesktopEntry, locales: &[String]) -> bool {
     let program_name = program_name.to_lowercase();
 
-    entry.appid.to_lowercase().contains(&program_name)
+    entry
+        .name(locales)
+        .unwrap_or_default()
+        .to_lowercase()
+        .contains(&program_name)
         || entry
             .generic_name(locales)
             .unwrap_or_default()
