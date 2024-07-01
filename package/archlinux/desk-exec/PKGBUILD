@@ -1,7 +1,7 @@
 # Maintainer: Carter Jamison <axertheaxe@proton.me>
 
 pkgname=desk-exec
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Execute programs defined in XDG desktop entries directly from the command line"
 url="https://github.com/axertheaxe/desk-exec"
