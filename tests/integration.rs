@@ -16,7 +16,7 @@ fn default_dirs() {
 
 #[test]
 fn execute_entry() {
-    let entry_file_path = create_entry().expect("could not create entry file");
+    let entry_file_path = create_entry("ls.desktop", "ls").expect("could not create entry file");
 
     let entry =
         &desk_exec::search_for_entries("ls", &[entry_file_path], &["en_us".to_string()], true)
@@ -25,16 +25,18 @@ fn execute_entry() {
     desk_exec::exec_entry(&entry, true).expect("could not execute entry");
 }
 
-fn create_entry() -> Option<PathBuf> {
+fn create_entry(name: &str, exec: &str) -> Option<PathBuf> {
     let out_env = env::var("OUT_DIR").ok()?;
     let out_dir = Path::new(&out_env);
-    let entry_path = out_dir.join("ls.desktop");
+    let entry_path = out_dir.join(name);
 
-    let entry_data = r#"
+    let entry_data = format!(
+        r#"
         [Desktop Entry]
-        Name=ls
-        Exec=ls
-    "#;
+        Name={name}
+        Exec={exec}
+    "#
+    );
 
     let mut entry = File::create(&entry_path).ok()?;
     entry.write_all(entry_data.as_bytes()).ok()?;
