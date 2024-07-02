@@ -33,5 +33,5 @@ fn create_and_execute_entry() {
     )
     .expect("could not find the temporary entry.")[0];
 
-    desk_exec::exec_entry(&entry, true).expect("could not execute the temporary deskopt entry");
+    desk_exec::exec_entry(&entry, true).expect("could not execute the temporary desktop entry");
 }
