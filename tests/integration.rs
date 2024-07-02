@@ -5,6 +5,8 @@ use std::{
     path::{Path, PathBuf},
 };
 
+use desk_exec::CleanPlaceholders;
+
 #[test]
 fn default_dirs() {
     let dirs = desk_exec::get_default_entry_dirs()
@@ -16,13 +18,28 @@ fn default_dirs() {
 
 #[test]
 fn execute_entry() {
-    let entry_file_path = create_entry("ls.desktop", "ls").expect("could not create entry file");
+    let entry_dir = create_entry("ls.desktop", "ls").expect("could not create entry file");
 
-    let entry =
-        &desk_exec::search_for_entries("ls", &[entry_file_path], &["en_us".to_string()], true)
-            .expect("could not search for entries")[0];
+    let entry = &desk_exec::search_for_entries("ls", &[entry_dir], &["en_us".to_string()], true)
+        .expect("could not search for entries")[0];
 
     desk_exec::exec_entry(&entry, true).expect("could not execute entry");
+}
+
+#[test]
+fn clean_placeholders() {
+    let entry_dir = create_entry("clean_placeholders.desktop", "dum%fmy%U%F")
+        .expect("could not create entry file");
+
+    let entry = &desk_exec::search_for_entries(
+        "clean_placeholders",
+        &[entry_dir],
+        &["en_us".to_string()],
+        true,
+    )
+    .expect("could not search for entries")[0];
+
+    assert_eq!(entry.exec_clean().unwrap(), "dummy");
 }
 
 fn create_entry(name: &str, exec: &str) -> Option<PathBuf> {
