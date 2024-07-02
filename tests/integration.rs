@@ -1,4 +1,9 @@
-use std::{env, fs::File, io::Write, path::Path};
+use std::{
+    env,
+    fs::File,
+    io::Write,
+    path::{Path, PathBuf},
+};
 
 #[test]
 fn default_dirs() {
@@ -10,9 +15,20 @@ fn default_dirs() {
 }
 
 #[test]
-fn create_and_execute_entry() {
-    let out_dir = env::var("OUT_DIR").expect("could not get Cargo 'OUT_DIR' environment variable");
-    let temp_dir = Path::new(&out_dir);
+fn execute_entry() {
+    let entry_file_path = create_entry().expect("could not create entry file");
+
+    let entry =
+        &desk_exec::search_for_entries("ls", &[entry_file_path], &["en_us".to_string()], true)
+            .expect("could not search for entries")[0];
+
+    desk_exec::exec_entry(&entry, true).expect("could not execute entry");
+}
+
+fn create_entry() -> Option<PathBuf> {
+    let out_env = env::var("OUT_DIR").ok()?;
+    let out_dir = Path::new(&out_env);
+    let entry_path = out_dir.join("ls.desktop");
 
     let entry_data = r#"
         [Desktop Entry]
@@ -20,18 +36,8 @@ fn create_and_execute_entry() {
         Exec=ls
     "#;
 
-    let mut file = File::create_new(temp_dir.join("ls.desktop"))
-        .expect("failed to create a file in the temporary directory");
-    file.write_all(entry_data.as_bytes())
-        .expect("could not write at the file in the temporary directory");
+    let mut entry = File::create(&entry_path).ok()?;
+    entry.write_all(entry_data.as_bytes()).ok()?;
 
-    let entry = &desk_exec::search_for_entries(
-        "ls",
-        &[temp_dir.to_path_buf()],
-        &["en_us".to_string()],
-        true,
-    )
-    .expect("could not find the temporary entry.")[0];
-
-    desk_exec::exec_entry(&entry, true).expect("could not execute the temporary desktop entry");
+    Some(out_dir.to_path_buf())
 }
