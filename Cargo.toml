@@ -2,6 +2,7 @@
 name = "desk-exec"
 description = "Execute programs defined in XDG desktop entries directly from the command line"
 authors = ["Carter Jamison <axertheaxe@proton.me>"]
+categories = ["command-line-interface", "command-line-utilities"]
 repository = "https://github.com/axertheaxe/desk-exec"
 license = "Unlicense"
 readme = "README.md"
