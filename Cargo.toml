@@ -6,7 +6,7 @@ categories = ["command-line-interface", "command-line-utilities"]
 repository = "https://github.com/axertheaxe/desk-exec"
 license = "Unlicense"
 readme = "README.md"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 
 [dependencies]
