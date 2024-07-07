@@ -183,13 +183,9 @@ fn match_entry_name(program_name: &str, entry: &DesktopEntry, locales: &[String]
 
     entry
         .name(locales)
-        .unwrap_or_default()
-        .to_lowercase()
-        .contains(&program_name)
+        .map_or(false, |name| name.to_lowercase().contains(&program_name))
         || entry.appid.to_lowercase().contains(&program_name)
         || entry
             .generic_name(locales)
-            .unwrap_or_default()
-            .to_lowercase()
-            .contains(&program_name)
+            .map_or(false, |name| name.to_lowercase().contains(&program_name))
 }
