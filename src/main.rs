@@ -1,6 +1,3 @@
-mod args;
-mod config;
-
 use std::{io, path::PathBuf, process};
 
 use anyhow::{Context, Result};
@@ -8,6 +5,9 @@ use args::Arguments;
 use clap::Parser;
 use config::Config;
 use freedesktop_desktop_entry::DesktopEntry;
+
+mod args;
+mod config;
 
 fn main() -> Result<()> {
     let arguments = Arguments::parse();
