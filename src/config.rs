@@ -18,12 +18,12 @@ pub struct Config {
 impl Config {
     pub fn try_new(file_path: Option<&Path>) -> Result<Self> {
         if let Some(path) = file_path {
-            return Self::try_from_file(path);
+            return Self::try_from(path);
         }
 
         match get_default_config_file() {
-            Ok(config) => Self::try_from_file(&config),
-            Err(_) => Self::try_from_file(&create_default_config_file()?),
+            Ok(config) => Self::try_from(config.as_ref()),
+            Err(_) => Self::try_from(create_default_config_file()?.as_ref()),
         }
     }
 
@@ -57,13 +57,17 @@ impl Config {
 
         self.search.dirs.retain(|path| path.exists())
     }
+}
 
-    fn try_from_file(file_path: &Path) -> Result<Self> {
-        let file_contents = fs::read_to_string(file_path)
-            .map_err(|_| ConfigError::Read(file_path.to_path_buf()))?;
+impl TryFrom<&Path> for Config {
+    type Error = ConfigError;
 
-        let config = toml::from_str(&file_contents)
-            .map_err(|_| ConfigError::Toml(file_path.to_path_buf()))?;
+    fn try_from(path: &Path) -> result::Result<Self, Self::Error> {
+        let file_contents =
+            fs::read_to_string(path).map_err(|_| ConfigError::Read(path.to_path_buf()))?;
+
+        let config =
+            toml::from_str(&file_contents).map_err(|_| ConfigError::Toml(path.to_path_buf()))?;
 
         Ok(config)
     }

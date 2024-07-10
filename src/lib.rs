@@ -11,6 +11,7 @@
 
 use std::{
     borrow::Cow,
+    ops::Not,
     panic,
     path::{Path, PathBuf},
     process::{Command, ExitStatus, Stdio},
@@ -116,11 +117,7 @@ pub fn search_for_entries<'a>(
         }
     }
 
-    if entries.is_empty() {
-        None
-    } else {
-        Some(entries)
-    }
+    entries.is_empty().not().then_some(entries)
 }
 
 /// Attempts to execute the program within a desktop entry. The executed program will be detached
