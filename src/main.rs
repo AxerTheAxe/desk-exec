@@ -58,10 +58,8 @@ fn main() -> Result<()> {
 }
 
 fn select_entry<'a>(entries: &'a [DesktopEntry]) -> Result<&'a DesktopEntry<'a>> {
-    if entries.len() == 1 {
-        return entries
-            .first()
-            .context("could not get the first entry from the list");
+    if let [entry] = entries {
+        return Ok(entry);
     }
 
     let index_width = entries.len().to_string().len();
