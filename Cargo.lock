@@ -167,7 +167,7 @@ checksum = "0b6a852b24ab71dffc585bcb46eaf7959d175cb865a7152e35b348d1b2960422"
 
 [[package]]
 name = "desk-exec"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "freedesktop-desktop-entry",
  "regex",
@@ -176,7 +176,7 @@ dependencies = [
 
 [[package]]
 name = "desk-exec-bin"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "anyhow",
  "clap",
