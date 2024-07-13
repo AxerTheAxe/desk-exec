@@ -32,6 +32,12 @@ entries in the user applications folder, which takes precedence over the system 
 desk-exec --first-only <PROGRAM_NAME_OR_SUBSTRING>
 ```
 
+### Library
+
+Desk-exec provides a Rust API for executing desktop entries. 
+
+Documentation can be found [here](https://docs.rs/desk-exec/latest/desk_exec).
+
 ## Configuration
 
 A default configuration file is generated at `$HOME/.config/desk-exec/desk_exec.toml`.
@@ -72,7 +78,11 @@ The `dist` folder will contain any extra stuff like shell completions and man pa
 Desk-exec can also be built from source or installed with cargo from [crates.io](https://crates.io/crates/desk_exec).
 
 ```sh
-cargo install desk-exec
+# Binary
+cargo install desk-exec-bin
+
+# Library
+carto add desk-exec
 ```
 
 ## Contributing
