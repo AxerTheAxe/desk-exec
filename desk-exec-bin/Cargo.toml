@@ -5,7 +5,6 @@ authors = ["Carter Jamison <axertheaxe@proton.me>"]
 categories = ["command-line-interface", "command-line-utilities"]
 repository = "https://github.com/axertheaxe/desk-exec"
 license = "Unlicense"
-readme = "README.md"
 version = "0.2.0"
 edition = "2021"
 
