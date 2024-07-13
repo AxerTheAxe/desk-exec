@@ -82,7 +82,7 @@ Desk-exec can also be built from source or installed with cargo from [crates.io]
 cargo install desk-exec-bin
 
 # Library
-carto add desk-exec
+cargo add desk-exec
 ```
 
 ## Contributing
