@@ -1,0 +1,30 @@
+[package]
+name = "desk-exec-bin"
+description = "Execute programs defined in XDG desktop entries directly from the command line"
+authors = ["Carter Jamison <axertheaxe@proton.me>"]
+categories = ["command-line-interface", "command-line-utilities"]
+repository = "https://github.com/axertheaxe/desk-exec"
+license = "Unlicense"
+readme = "README.md"
+version = "0.1.5"
+edition = "2021"
+
+[dependencies.desk-exec]
+path = "../desk-exec"
+version = "0.1.x"
+
+[dependencies]
+anyhow = "1.0.x"
+clap = { version = "4.5.x", features = ["derive"] }
+freedesktop-desktop-entry = "0.6.x"
+regex = "1.10.x"
+serde = { version = "1.0.x", features = ["derive"] }
+thiserror = "1.0.x"
+toml = "0.8.x"
+xdg = "2.5.x"
+
+[build-dependencies]
+clap = { version = "4.5.x", features = ["derive"] }
+clap_complete = "4.5.x"
+clap_complete_nushell = "4.5.x"
+clap_mangen = "0.2.x"
