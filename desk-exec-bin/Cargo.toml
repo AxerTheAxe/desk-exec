@@ -9,6 +9,10 @@ readme = "README.md"
 version = "0.1.5"
 edition = "2021"
 
+[[bin]]
+name = "desk-exec"
+path = "src/main.rs"
+
 [dependencies.desk-exec]
 path = "../desk-exec"
 version = "0.1.x"
