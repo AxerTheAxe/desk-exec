@@ -1,7 +1,7 @@
 [package]
 name = "desk-exec"
 description = "Library to execute the programs defined in XDG desktop entries"
-authors = ["Carter Jamison <axertheaxe@proton.me>"]
+authors = ["Katherine Jamison <axertheaxe@proton.me>"]
 categories = ["os::unix-apis"]
 repository = "https://github.com/axertheaxe/desk-exec"
 license = "Unlicense"
@@ -10,6 +10,6 @@ version = "0.2.1"
 edition = "2021"
 
 [dependencies]
-freedesktop-desktop-entry = "0.6.x"
-regex = "1.10.x"
-thiserror = "1.0.x"
+freedesktop-desktop-entry = "0.6.*"
+regex = "1.10.*"
+thiserror = "1.0.*"
