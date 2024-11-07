@@ -3,6 +3,7 @@ name = "desk-exec"
 description = "Library to execute the programs defined in XDG desktop entries"
 authors = ["Katherine Jamison <axertheaxe@proton.me>"]
 categories = ["os::unix-apis"]
+keywords = ["desktop", "entries", "xdg", "execute"]
 repository = "https://github.com/axertheaxe/desk-exec"
 license = "Unlicense"
 readme = "../README.md"
