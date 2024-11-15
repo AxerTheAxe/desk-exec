@@ -16,7 +16,7 @@ path = "src/main.rs"
 
 [dependencies.desk-exec]
 path = "../desk-exec"
-version = "0.2.x"
+version = "1.0.0"
 
 [dependencies]
 anyhow = "1.0.*"
