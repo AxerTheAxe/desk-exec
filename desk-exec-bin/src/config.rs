@@ -40,13 +40,17 @@ impl Config {
         }
     }
 
-    pub fn get_dirs(&self) -> Option<&Vec<PathBuf>> {
-        let search_dirs = &self.search.dirs;
+    pub fn get_dirs(&self) -> Option<impl Iterator<Item = &PathBuf>> {
+        let filtered = self
+            .search
+            .dirs
+            .iter()
+            .filter(|path| path.exists() && !path.as_os_str().is_empty());
 
-        if search_dirs.is_empty() {
-            None
+        if filtered.clone().next().is_some() {
+            Some(filtered)
         } else {
-            Some(search_dirs)
+            None
         }
     }
 
