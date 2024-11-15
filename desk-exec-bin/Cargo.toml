@@ -7,7 +7,7 @@ keywords = ["desktop", "command-line", "xdg", "command-line-tool", "entries"]
 repository = "https://github.com/axertheaxe/desk-exec"
 license = "Unlicense"
 readme = "../README.md"
-1ersion = "1.0.2"
+version = "1.0.2"
 edition = "2021"
 
 [[bin]]

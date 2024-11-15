@@ -7,7 +7,7 @@ keywords = ["desktop", "entries", "xdg", "execute"]
 repository = "https://github.com/axertheaxe/desk-exec"
 license = "Unlicense"
 readme = "../README.md"
-1ersion = "1.0.2"
+version = "1.0.2"
 edition = "2021"
 
 [dependencies]
