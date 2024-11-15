@@ -21,10 +21,10 @@ version = "0.2.x"
 [dependencies]
 anyhow = "1.0.*"
 clap = { version = "4.5.*", features = ["derive"] }
-freedesktop-desktop-entry = "0.6.*"
-regex = "1.10.*"
+freedesktop-desktop-entry = "0.7.*"
+regex = "1.11.*"
 serde = { version = "1.0.*", features = ["derive"] }
-thiserror = "1.0.*"
+thiserror = "2.0.*"
 toml = "0.8.*"
 xdg = "2.5.*"
 
