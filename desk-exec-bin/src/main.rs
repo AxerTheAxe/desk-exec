@@ -31,9 +31,12 @@ fn main() -> Result<()> {
     }
 
     let locales = freedesktop_desktop_entry::get_languages_from_env();
+
+    let owned_dirs = dirs.cloned().collect::<Vec<PathBuf>>();
+
     let entries = desk_exec::search_for_entries(
         &arguments.program.unwrap_or_default(),
-        dirs,
+        owned_dirs.into_iter(),
         &locales,
         arguments.first_only,
     )
@@ -88,8 +91,8 @@ fn select_entry<'a>(entries: &'a [DesktopEntry]) -> Result<&'a DesktopEntry<'a>>
     }
 }
 
-fn print_search_dirs(dirs: &[PathBuf]) {
-    let mut dirs = dirs.to_vec();
+fn print_search_dirs<'a>(dirs: impl Iterator<Item = &'a PathBuf>) {
+    let mut dirs = dirs.collect::<Vec<_>>();
     dirs.reverse();
 
     if dirs.is_empty() {

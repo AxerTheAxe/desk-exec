@@ -62,7 +62,7 @@ impl<'a> CleanPlaceholders for DesktopEntry<'a> {
 
 /// Panic-less wrapper for 'fredesktop_desktop_entry::default_paths()'. Returns the default XDG
 /// data directories, where desktop entries are stored on most systems.
-pub fn get_default_entry_dirs() -> Option<Vec<PathBuf>> {
+pub fn get_default_entry_dirs() -> Option<impl Iterator<Item = PathBuf>> {
     panic::catch_unwind(freedesktop_desktop_entry::default_paths).ok()
 }
 
@@ -84,13 +84,13 @@ pub fn get_default_entry_dirs() -> Option<Vec<PathBuf>> {
 /// ```
 pub fn search_for_entries<'a>(
     program_name: &str,
-    dirs: &[PathBuf],
+    dirs: impl Iterator<Item = PathBuf>,
     locales: &[String],
     get_first: bool,
 ) -> Option<Vec<DesktopEntry<'a>>> {
     let mut entries = Vec::new();
-    for file in Iter::new(dirs.to_vec()) {
-        let entry = match DesktopEntry::from_path(file.clone(), locales) {
+    for file in Iter::new(dirs) {
+        let entry = match DesktopEntry::from_path(file.clone(), Some(locales)) {
             Ok(entry) => entry,
             Err(_) => continue,
         };
