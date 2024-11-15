@@ -9,10 +9,10 @@ use desk_exec::CleanPlaceholders;
 
 #[test]
 fn default_dirs() {
-    let dirs = desk_exec::get_default_entry_dirs()
-        .expect("could not get XDG base application directories");
-    let dirs_comp = freedesktop_desktop_entry::default_paths();
-
+    let dirs: Vec<PathBuf> = desk_exec::get_default_entry_dirs()
+        .expect("could not get XDG base application directories")
+        .collect();
+    let dirs_comp: Vec<PathBuf> = freedesktop_desktop_entry::default_paths().collect();
     assert_eq!(dirs, dirs_comp);
 }
 
@@ -20,8 +20,13 @@ fn default_dirs() {
 fn execute_entry() {
     let entry_dir = create_entry("ls.desktop", "ls").expect("could not create entry file");
 
-    let entry = &desk_exec::search_for_entries("ls", &[entry_dir], &["en_us".to_string()], true)
-        .expect("could not search for entries")[0];
+    let entry = &desk_exec::search_for_entries(
+        "ls",
+        [entry_dir].iter().cloned(),
+        &["en_us".to_string()],
+        true,
+    )
+    .expect("could not search for entries")[0];
 
     desk_exec::exec_entry(&entry, true).expect("could not execute entry");
 }
@@ -33,7 +38,7 @@ fn clean_placeholders() {
 
     let entry = &desk_exec::search_for_entries(
         "clean_placeholders",
-        &[entry_dir],
+        [entry_dir].iter().cloned(), // .cloned() to get PathBuf instead of &PathBuf
         &["en_us".to_string()],
         true,
     )
