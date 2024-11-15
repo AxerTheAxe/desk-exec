@@ -72,11 +72,13 @@ pub fn get_default_entry_dirs() -> Option<impl Iterator<Item = PathBuf>> {
 /// # Examples
 ///
 /// ```
-/// let dirs = desk_exec::get_default_entry_dirs().unwrap();
-/// let locales = freedesktop_desktop_entry::get_languages_from_env();
+/// use desk_exec::{search_for_entries, get_default_entry_dirs};
+/// use freedesktop_desktop_entry::get_languages_from_env;
 ///
-/// let entries = desk_exec::search_for_entries("program", &dirs, &locales,
-/// false).unwrap_or_default();
+/// let dirs = get_default_entry_dirs().unwrap();
+/// let locales = get_languages_from_env();
+///
+/// let entries = search_for_entries("program", dirs, &locales, false).unwrap_or_default();
 ///
 /// for entry in entries {
 ///     println!("{}", entry.path.display());
@@ -131,17 +133,18 @@ pub fn search_for_entries<'a>(
 /// # Examples
 ///
 /// ```
-/// let entry = freedesktop_desktop_entry::DesktopEntry::from_appid("0");
+/// use desk_exec::exec_entry;
+/// use freedesktop_desktop_entry::DesktopEntry;
 ///
-/// match desk_exec::exec_entry(&entry, false) {
+/// let entry = DesktopEntry::from_appid("example_appid");
+///
+/// match exec_entry(&entry, false) {
 ///     Ok(Some(exit_status)) => {
 ///         eprintln!("Program executed with code: '{}'", exit_status.code().unwrap_or_default());
 ///     }
-///
 ///     Ok(None) => {
-///         eprintln!("Program executed with no code.");
+///         eprintln!("Program executed with no exit code.");
 ///     }
-///
 ///     Err(_) => {
 ///         eprintln!("Program failed to execute.");
 ///     }
