@@ -66,6 +66,21 @@ Desk-exec can be installed using your favorite AUR helper with any of the follow
 ```sh
 paru -S (desk-exec, desk-exec-bin, desk-exec-git)
 ```
+### NixOS
+
+Desk-exec can be installed from `nixpkgs`.
+
+```sh
+nix-shell -p desk-exec
+```
+
+or
+
+```nix
+{
+    environment.systemPackages = [ pkgs.desk-exec ];
+}
+```
 
 ### Releases
 
