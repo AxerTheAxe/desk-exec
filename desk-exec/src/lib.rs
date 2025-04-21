@@ -46,7 +46,7 @@ pub trait CleanPlaceholders {
     fn exec_clean(&self) -> Result<Cow<str>>;
 }
 
-impl<'a> CleanPlaceholders for DesktopEntry<'a> {
+impl<'a> CleanPlaceholders for DesktopEntry {
     /// Returns the name of the entries executable without any placeholder values.
     fn exec_clean(&self) -> Result<Cow<str>> {
         let output = Regex::new("%[a-zA-Z]")
@@ -89,7 +89,7 @@ pub fn search_for_entries<'a>(
     dirs: impl Iterator<Item = PathBuf>,
     locales: &[String],
     get_first: bool,
-) -> Option<Vec<DesktopEntry<'a>>> {
+) -> Option<Vec<DesktopEntry>> {
     let mut entries = Vec::new();
     for file in Iter::new(dirs) {
         let entry = match DesktopEntry::from_path(file.clone(), Some(locales)) {
