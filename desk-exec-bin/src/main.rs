@@ -60,7 +60,7 @@ fn main() -> Result<()> {
     );
 }
 
-fn select_entry<'a>(entries: &'a [DesktopEntry]) -> Result<&'a DesktopEntry<'a>> {
+fn select_entry<'a>(entries: &'a [DesktopEntry]) -> Result<&'a DesktopEntry> {
     if let [entry] = entries {
         return Ok(entry);
     }
